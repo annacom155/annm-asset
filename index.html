@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人空间</title>
+       <link rel="icon" type="image/png" sizes="16x16" href="/main.png">
+<!-- Apple设备 -->
+<link rel="apple-touch-icon" sizes="180x180" href="/main.png">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            transition: all 0.5s ease;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.2s forwards;
+            position: relative;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        header:hover {
+            background-color: #1a252f;
+        }
+        
+        /* 头像样式 */
+        .avatar-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--secondary-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav {
+            background-color: var(--dark-color);
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            animation: fadeIn 1s ease 0.4s forwards;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 1.5rem;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        nav ul li:hover {
+            transform: translateY(-3px);
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: -5rem;
+            transition: all 0.5s ease;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.6s forwards;
+        }
+        
+        .hero:hover {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            animation: fadeInUp 1s ease 1s both;
+        }
+        
+        .about, .projects, .contact {
+            padding: 5rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+        
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--secondary-color);
+            bottom: -10px;
+            left: 25%;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .section-title:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: scale(0.95);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px) scale(1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-image {
+            height: 180px;
+            background-color: var(--light-color);
+            background-size: cover;
+            background-position: center;
+            transition: all 0.5s ease;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.03);
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+        
+        .project-info p {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.7rem 1.3rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+            box-shadow: 0 3px 8px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(52, 152, 219, 0.4);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+            opacity: 0;
+            animation: fadeIn 1s ease 1.2s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.8rem 0;
+            }
+            
+            .hero {
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+                padding: 4rem 0;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .avatar {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <!-- 圆形头像 -->
+            <div class="avatar-container">
+                <img src="https://888888888888888888888888888888888888.netlify.app/a/logo.png" 
+                     alt="头像" 
+                     class="avatar">
+            </div>
+            <h1>我的个人空间</h1>
+            <p>盘口 & 开发者</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#projects">项目</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>不断更新化话术方式</h2>
+            <p>提高马扁话术成功转换率&不断更新成功案例以及工具</p>
+        </div>
+    </section>
+    
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">关于我</h2>
+            <p>我是在家里蹲的二次元&技术宅，因作失望过上了躺平生活，曾因游戏太菜做过Android游戏外挂收录过无数诈骗话术</p>
+            <p>在过去的1年里，在Telegram收录，希望帮助各位灰产小白。</p>
+        </div>
+    </section>
+    
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">我的项目</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="project-info">
+                        <h3>前端打粉</h3>
+                        <p>这好比一个鱼塘，找出自己要的鱼，筛选找出自己对象堤高转换率，黙认遇女装韩男遇男Japanese日女高富帅/美，用矩阵多聊</p>
+                      
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="project-info">
+                        <h3>精聊&粗聊</h3>
+                        <p>提高信任，粗聊=筛选-精聊=慢慢投入感情，默认以恋爱等这是一个漫长过程大额通常需要十天一月以上</p>
+                   
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    <div class="project-info">
+                        <h3>变现</h3>
+                        <p>这是最难一关，一般是自己遇到了困难&宣称自己赚钱了要带你一关，成功3000以上建议洗钱</p>
+                        <a href="/a/1.html" class="btn">更多工具</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">联系我</h2>
+            <p>如果您对灰产项目感兴趣或有任何问题或想合作，请随时通过以下方式联系我</p>
+            <p>邮箱: q2020770@outlook.com</p>
+            <p>welink(推荐<Android/ios软件商店下载>):通讯录>+号>搜索手机号:19272776743
+     </p>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 我的个人空间. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 滚动动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.about, .projects, .contact');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
