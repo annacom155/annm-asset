@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精选网站合集</title>
+    <link rel="stylesheet" href="1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="floating-bubbles" id="bubbles"></div>
+    
+    <div class="container">
+        <header>
+            <div class="hero">
+                <h1>精选网站合集</h1>
+                <p>探索网络世界的精华，为您精心挑选的高质量资源集合</p>
+            </div>
+        </header>
+
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="搜索网站..." id="searchInput">
+        </div>
+
+        <div class="filter-controls">
+            <button class="filter-btn active ripple" data-filter="all">全部</button>
+            <button class="filter-btn ripple" data-filter="design">设计</button>
+            <button class="filter-btn ripple" data-filter="dev">开发</button>
+            <button class="filter-btn ripple" data-filter="tool">工具</button>
+            <button class="filter-btn ripple" data-filter="resource">资源</button>
+        </div>
+
+        <div class="websites-grid">
+            <div class="website-card flip-card" data-category="design">
+                <div class="flip-card-inner">
+                    <i class="fas fa-paint-brush card-icon"></i>
+                    <h3>合同</h3>
+                    <p>增加信任权威性</p>
+                    <div class="tags">
+                        <span class="tag">权威</span>
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">灵感</span>
+                    </div>
+                    <a href="/a/h.html" class="btn ripple" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> 访问网站
+                    </a>
+                </div>
+            </div>
+
+            <div class="website-card flip-card" data-category="dev">
+                <div class="flip-card-inner">
+                    <i class="fas fa-code card-icon"></i>
+                    <h3>韭菜</h3>
+                    <p>创业粉，新手变现</p>
+                    <div class="tags">
+                        <span class="tag">代码</span>
+                        <span class="tag">开源</span>
+                        <span class="tag">协作</span>
+                    </div>
+                    <a href="https://51ad.netlify.app/" class="btn ripple" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> 访问网站
+                    </a>
+                </div>
+            </div>
+
+            <div class="website-card flip-card" data-category="dev">
+                <div class="flip-card-inner">
+                    <i class="fas fa-book card-icon"></i>
+                    <h3>电商</h3>
+                    <p>从学费到水军大额变现</p>
+                    <div class="tags">
+                        <span class="tag">文档</span>
+                        <span class="tag">Web开发</span>
+                        <span class="tag">教程</span>
+                    </div>
+                    <a href="https://baidu.netlify.app/" class="btn ripple" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> 访问网站
+                    </a>
+                </div>
+            </div>
+
+            <div class="website-card flip-card" data-category="design">
+                <div class="flip-card-inner">
+                    <i class="fas fa-palette card-icon"></i>
+                    <h3>游戏</h3>
+                    <p>给人一个可以赚但不多全靠演</p>
+                    <div class="tags">
+                        <span class="tag">设计</span>
+                        <span class="tag">创意</span>
+                        <span class="tag">作品集</span>
+                    </div>
+                    <a href="https://xn-4rr70v.netlify.app/" class="btn ripple" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> 访问网站
+                    </a>
+                </div>
+            </div>
+
+            <div class="website-card flip-card" data-category="dev">
+                <div class="flip-card-inner">
+                    <i class="fas fa-terminal card-icon"></i>
+                    <h3>CodePen</h3>
+                    <p>在线代码编辑器，分享前端代码片段的社交平台，前端开发者的游乐场。</p>
+                    <div class="tags">
+                        <span class="tag">前端</span>
+                        <span class="tag">在线编辑</span>
+                        <span class="tag">分享</span>
+                    </div>
+                    <a href="https://codepen.io" class="btn ripple" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> 访问网站
+                    </a>
+                </div>
+            </div>
+
+            <div class="website-card flip-card" data-category="resource">
+                <div class="flip-card-inner">
+                    <i class="fas fa-question-circle card-icon"></i>
+                    <h3>开发中</h3>
+                    <p>程序员问答社区，解决开发中遇到的各种问题，全球开发者互助平台。</p>
+                    <div class="tags">
+                        <span class="tag">问答</span>
+                        <span class="tag">编程</span>
+                        <span class="tag">社区</span>
+                    </div>
+                    <a href="https://stackoverflow.com" class="btn ripple" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> 访问网站
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 精选网站合集 · 保留所有权利</p>
+    </footer>
+
+    <script src="1.js"></script>
+</body>
+</html>
